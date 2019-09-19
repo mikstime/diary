@@ -1,0 +1,176 @@
+type AuthSession {
+  token: String!
+}
+
+input CreateDailyTaskInput {
+  clientMutationId: String!
+  token: String!
+  taskName: String!
+  state: Int!
+}
+
+type CreateDailyTaskPayload {
+  clientMutationId: String!
+  dailyTask: DailyTask
+  id: ID
+}
+
+input CreateWeeklyTaskInput {
+  clientMutationId: String!
+  token: String!
+  taskName: String!
+  days: [Int!]!
+}
+
+type CreateWeeklyTaskPayload {
+  clientMutationId: String!
+  weklyTask: WeeklyTask
+  id: ID
+}
+
+type DailyTask implements Node {
+  id: ID!
+  taskName: String
+  state: Int
+  owner: User
+}
+
+type DailyTaskConnection {
+  edges: [DailyTaskEdge]
+  pageInfo: PageInfo!
+}
+
+type DailyTaskEdge {
+  cursor: String!
+  node: DailyTask
+}
+
+input DeleteDailyTaskInput {
+  clientMutationId: String!
+  token: String!
+  id: ID
+}
+
+type DeleteDailyTaskPayload {
+  clientMutationId: String!
+  status: Status!
+}
+
+input DeleteWeeklyTaskInput {
+  clientMutationId: String!
+  token: String!
+  id: ID
+}
+
+type DeleteWeeklyTaskPayload {
+  clientMutationId: String!
+  status: Status!
+}
+
+type Mutation {
+  signIn(input: SignInInput): SignInPayload
+  signUp(input: SignUpInput): SignUpPayload
+  createDailyTask(input: CreateDailyTaskInput): CreateDailyTaskPayload
+  updateDailyTask(input: UpdateDailyTaskInput): UpdateDailyTaskPayload
+  deleteDailyTask(input: DeleteDailyTaskInput): DeleteDailyTaskPayload
+  createWeeklyTask(input: CreateWeeklyTaskInput): CreateWeeklyTaskPayload
+  updateWeeklyTask(input: UpdateWeeklyTaskInput): UpdateWeeklyTaskPayload
+  deleteWeeklyTask(input: DeleteWeeklyTaskInput): DeleteWeeklyTaskPayload
+}
+
+interface Node {
+  id: ID!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type Query {
+  node(id: ID!): Node
+}
+
+input SignInInput {
+  email: String!
+  password: String!
+}
+
+type SignInPayload {
+  session: AuthSession
+  status: Status
+}
+
+input SignUpInput {
+  email: String!
+  password: String!
+  firstname: String!
+  lastname: String!
+}
+
+type SignUpPayload {
+  user: User
+  status: Status
+}
+
+enum Status {
+  SUCCESS
+  FAILED
+  INTERNAL_ERROR
+}
+
+input UpdateDailyTaskInput {
+  clientMutationId: String!
+  token: String!
+  taskName: String
+  state: Int
+}
+
+type UpdateDailyTaskPayload {
+  clientMutationId: String!
+  dailyTask: DailyTask
+  id: ID
+}
+
+input UpdateWeeklyTaskInput {
+  clientMutationId: String!
+  token: String!
+  taskName: String
+  days: [Int]
+}
+
+type UpdateWeeklyTaskPayload {
+  clientMutationId: String!
+  weklyTask: WeeklyTask
+  id: ID
+}
+
+type User implements Node {
+  id: ID!
+  email: String
+  password: String
+  firstname: String
+  lastname: String
+  dailyTasks: DailyTaskConnection
+  weeklyTasks: WeeklyTaskConnection
+}
+
+type WeeklyTask implements Node {
+  id: ID!
+  taskName: String
+  days: [Int]
+  owner: User
+}
+
+type WeeklyTaskConnection {
+  edges: [WeeklyTaskEdge]
+  pageInfo: PageInfo!
+}
+
+type WeeklyTaskEdge {
+  cursor: String!
+  node: WeeklyTask
+}
+

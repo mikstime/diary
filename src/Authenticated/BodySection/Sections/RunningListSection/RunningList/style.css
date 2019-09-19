@@ -1,0 +1,66 @@
+.daily-tasks-list {
+  flex: 1;
+  overflow-y: scroll;
+}
+
+.days-holder {
+  display: flex;
+  align-items: center;
+  width: calc( 100% - 200px);
+  min-width: 200px;
+  opacity: 0.7;
+  font-family: "Rajdhani", sans-serif;
+}
+.days-holder span {
+  flex: 1;
+  text-align: center;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.daily-task {
+  width: 100%;
+  display: flex;
+}
+.daily-task .days {
+  width: calc(100% - 200px);
+  min-width: 200px;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
+.daily-task .days span {
+  flex: 1;
+  height: 1.5em;
+}
+.daily-task .days .empty {
+  opacity: 0.2;
+  background: gray;
+}
+.daily-task .days .in-progress {
+  opacity: 0.4;
+  background: orange;
+}
+.daily-task .days .was-failed {
+  opacity: 0.4;
+  background: red;
+}
+.daily-task .days .is-done {
+  opacity: 0.4;
+  background: green;
+}
+.daily-task p {
+  white-space: nowrap;
+  overflow: hidden;
+  width: 200px;
+  line-height: 1.5em;
+  text-indent: 7px;
+}
+.daily-task:focus {
+  outline: none;
+  border: none;
+}
+
+/*# sourceMappingURL=style.css.map */

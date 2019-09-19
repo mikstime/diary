@@ -1,0 +1,52 @@
+@import "../../../../../CONSTANTS"
+
+.daily-tasks-list
+  flex: 1
+  overflow-y: scroll
+.days-holder
+  display: flex
+  align-items: center
+  width: calc( 100% - 200px)
+  min-width: 200px
+  opacity: .7
+  font-family: "Rajdhani", sans-serif
+  span
+    flex: 1
+    text-align: center
+    padding-bottom: 5px
+    padding-top: 5px
+    border-left: 1px solid rgba(0,0,0,.2)
+    border-right: 1px solid rgba(0,0,0,.2)
+.daily-task
+  width: 100%
+  display: flex
+  .days
+    width: calc(100% - 200px)
+    min-width: 200px
+    display: flex
+    align-items: stretch
+    justify-content: stretch
+    span
+      flex: 1
+      height: 1.5em
+    .empty
+      opacity: .2
+      background: gray
+    .in-progress
+      opacity: .4
+      background: orange
+    .was-failed
+      opacity: .4
+      background: red
+    .is-done
+      opacity: .4
+      background: green
+  p
+    white-space: nowrap
+    overflow: hidden
+    width: 200px
+    line-height: 1.5em
+    text-indent: 7px
+  &:focus
+    outline: none
+    border: none

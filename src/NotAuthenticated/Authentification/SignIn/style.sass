@@ -1,0 +1,42 @@
+@import "../../../CONSTANTS"
+.signin-holder
+  display: flex
+  height: 100%
+  padding: 30px 0 0 20px
+  align-items: center
+  justify-content: center
+  flex-direction: column
+  flex: 1
+
+  .validated-input
+    width: 80%
+    display: flex
+    input[type="text"], input[type="password"]
+      font-family: 'Rajdhani', sans-serif
+      margin-bottom: 20px
+      border-radius: 20px
+      outline: none
+      border: none
+      text-indent: 20px
+      width: 100%
+      font-size: 1em
+      height: 45px
+
+.signin-button
+  text-align: center
+  color: $white
+  font-family: 'Rajdhani', sans-serif
+  font-weight: lighter
+  justify-self: flex-end
+  background: linear-gradient(to right bottom, $red, $blue)
+  background-size: 400% 400%
+  margin-bottom: 50px
+  background-position: 30% 30%
+  padding: 10px
+  font-size: 3em
+  border-radius: 1em
+  width: 80%
+  &:hover
+    filter : brightness(.9)
+  &:active
+    filter : brightness(.8)

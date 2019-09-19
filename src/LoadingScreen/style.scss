@@ -1,0 +1,39 @@
+.loading-screen-holder {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: linear-gradient(to right bottom, red, blue);
+  background-size: 400% 400%;
+
+  -webkit-animation: LoadingAnimation 4s ease-in-out infinite;
+  -moz-animation: LoadingAnimation 4s ease-in-out infinite;
+  animation: LoadingAnimation 4s ease-in-out infinite;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 4em;
+    opacity: .5;
+  }
+}
+@-webkit-keyframes LoadingAnimation {
+  0%{background-position: 30% 30%}
+  50%{background-position: 70% 70%}
+  100%{background-position: 30% 30%}
+}
+@-moz-keyframes LoadingAnimation {
+  0%{background-position: 30% 30%}
+  50%{background-position: 70% 70%}
+  100%{background-position: 30% 30%}
+}
+@keyframes LoadingAnimation {
+  0%{background-position: 30% 30%}
+  50%{background-position: 70% 70%}
+  100%{background-position: 30% 30%}
+}

@@ -1,0 +1,41 @@
+@import "../../../CONSTANTS"
+.restore-holder
+  display: flex
+  order: -1
+  margin-left: 40px
+  align-items: center
+  min-width: 200px
+  padding: 50px 0 50px 0
+  justify-content: center
+  flex-direction: column
+
+  .validated-input
+    width: 85%
+    display: flex
+    input[type="text"], input[type="password"]
+      font-family: 'Rajdhani', sans-serif
+      border-radius: 5px 5px 0 0
+      outline: none
+      border: none
+      text-indent: 7px
+      width: 100%
+      font-size: 1em
+      height: 45px
+
+.restore-button
+  text-align: center
+  color: $white
+  font-family: 'Rajdhani', sans-serif
+  font-weight: lighter
+  justify-self: flex-end
+  padding: 5px
+  background: linear-gradient(to right bottom, $red, $blue)
+  background-size: 400% 400%
+  background-position: 30% 30%
+  font-size: 2em
+  border-radius: 5px 5px 20px 20px
+  width: 90%
+  &:hover
+    filter : brightness(.9)
+  &:active
+    filter : brightness(.8)

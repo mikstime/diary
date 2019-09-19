@@ -1,0 +1,10 @@
+.authenticated-holder {
+  min-height: 100vh;
+  width: 100%;
+  background: #eee;
+  display: flex;
+  justify-content: center;
+  align-content: stretch;
+}
+
+/*# sourceMappingURL=style.css.map */

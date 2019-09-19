@@ -1,0 +1,52 @@
+@import "../../CONSTANTS"
+.authentication-holder
+  width: 80%
+  min-height : 80%
+  background: $opacite_black
+  border-radius: 20px
+  display: flex
+  justify-items: stretch
+  align-items: center
+  @media(max-width: 780px)
+    align-items: stretch
+    flex-direction: column
+    border-radius: 0
+    width: 100% !important
+    justify-content: center
+    .auth-selection
+      text-align: center
+      padding-left: 0
+      max-width: 90%
+      margin-top: 10px
+      margin: auto
+      padding-bottom: 20px
+    .restore-holder
+      margin-left: 0
+  @media(max-width : 900px)
+    height: 100%
+    width: 90%
+
+.auth-selection
+  height: 50%
+  padding-left: 50px
+  font-family: 'Quicksand', sans-serif
+  a
+    color : $dark_pink
+    font-size: 1.5em
+  h1
+    font-size: 3em
+    background: linear-gradient(to right bottom, $red, $blue)
+    background-size: 400% 400%
+    background-position: 30% 30%
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    margin-bottom: 10px
+  h2
+    color: $white
+    opacity: .8
+  h3
+    color : $white
+    opacity: .6
+  h2, h3
+    a
+      opacity: 1

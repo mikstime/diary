@@ -1,0 +1,41 @@
+@import "../../../../CONSTANTS"
+.medium
+  width: 500px
+  height: 500px
+.small
+  width: 350px
+  height : 400px
+.large
+  width: 600px
+  height: 600px
+.page-sized
+  width: 100%
+  min-height: 100vh
+.page-sized, .large, .small, .medium
+  display: flex
+  justify-items: stretch
+  align-items: stretch
+
+.section-holder
+  display: flex
+  flex: 1
+  flex-direction: column
+  align-items: stretch
+
+.section-body
+  flex: 1
+  display: flex
+  flex-direction: column
+  min-height: 150px
+  overflow: hidden
+  //background: linear-gradient(to right bottom, $dark_red, $dark_blue)
+  //background-size: 400% 400%
+  //background-position: 30% 30%
+  background: $white
+  color : $font_1
+  border-radius: 0 0 15px 15px
+  box-shadow: 0 3px 5px rgba(0,0,0,.2)
+  p
+    font-family: "Quicksand", sans-serif
+    color : $font_1
+    opacity: .6
