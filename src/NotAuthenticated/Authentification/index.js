@@ -38,7 +38,8 @@ export default class Authentication extends Component {
                 </div>
                     <Switch>
                         <Route exact path='/restore' component={Restore}/>
-                        <Route exaxt path='/signin' component={SignIn}/>
+                        <Route exaxt path='/signin'
+                               component={() => <SignIn onAuth={this.props.onAuth}/>}/>
                         <Route component={SignUp}/>
                     </Switch>
                 </Router>

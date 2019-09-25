@@ -4,7 +4,8 @@ import {
     FallibleEmailInput as EmailInput,
     FalliblePasswordInput as PasswordInput,
     FallibleNameInput as NameInput,
-    onInputChange
+    onInputChange,
+    FailsHolder
 } from '../Templates/Input'
 
 import SignUpMutation from './SignUpMutation'
@@ -22,7 +23,12 @@ export default class SignUp extends Component {
         if( firstname && lastname && email && password ) {
 
             //@TODO change application state to authenticated
-            SignUpMutation(firstname, lastname, email, password, e => console.log('res',e))
+            SignUpMutation(firstname, lastname, email, password, res => {
+                if(res) {
+                    //this.props.onAuth && this.props.onAuth(res.session)
+                }
+            })
+
         } else {
             this.setState(produce(draft => {++draft.timesFailed}))
         }
@@ -31,20 +37,16 @@ export default class SignUp extends Component {
         const { firstname, lastname, email, password } = this.state
         return(
             <div className='signup-holder'>
-                    <NameInput isCorrect={firstname}
-                               timesFailed={this.state.timesFailed}
-                               onChange={this.onInputChange('firstname')}
+                <FailsHolder
+                    correctElems={[firstname, lastname, email, password]}
+                    timesFailed={this.state.timesFailed}>
+                    <NameInput onChange={this.onInputChange('firstname')}
                                prefix={`First`}/>
-                    <NameInput isCorrect={lastname}
-                               timesFailed={this.state.timesFailed}
-                               onChange={this.onInputChange('lastname')}
+                    <NameInput onChange={this.onInputChange('lastname')}
                                prefix={`Last`}/>
-                    <EmailInput isCorrect={email}
-                                timesFailed={this.state.timesFailed}
-                                onChange={this.onInputChange('email')}/>
-                    <PasswordInput isCorrect={password}
-                                   timesFailed={this.state.timesFailed}
-                                   onChange={this.onInputChange('password')}/>
+                    <EmailInput onChange={this.onInputChange('email')}/>
+                    <PasswordInput onChange={this.onInputChange('password')}/>
+                </FailsHolder>
                 <div
                     className='signup-button'
                     onClick={this.handleClick}>Sign Up</div>

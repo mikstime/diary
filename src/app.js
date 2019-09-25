@@ -5,13 +5,16 @@ const AuthenticatedApp = React.lazy( () => import('./Authenticated'))
 const NotAuthenticatedApp = React.lazy(() => import('./NotAuthenticated'))
 function App(props) {
 
-  const [ isAuntentificated ] = useState(!true)
-  return(
-      <Suspense fallback={<LoadingScreen/>}>
-        {isAuntentificated ? <AuthenticatedApp/> : <NotAuthenticatedApp/>}
-      </Suspense>
-  )
-
+    const auth = (session) => {
+        console.log(session)
+        setIsAuthenticated(session)
+    }
+    const [ isAuthenticated, setIsAuthenticated ] = useState(null)
+    return(
+        <Suspense fallback={<LoadingScreen/>}>
+            {isAuthenticated ? <AuthenticatedApp/> : <NotAuthenticatedApp onAuth={auth}/>}
+        </Suspense>
+    )
 }
 
 export default App

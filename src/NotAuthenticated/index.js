@@ -6,7 +6,7 @@ export default class NotAuthenticatedApp extends Component {
     render() {
         return(
             <div className='not-authenticated-holder'>
-                <Authentication/>
+                <Authentication onAuth={this.props.onAuth}/>
             </div>
         )
     }

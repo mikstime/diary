@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import './style.sass'
 import SignInMutation from './SignInMutation'
+import produce from 'immer'
 import {
     FallibleEmailInput as EmailInput,
     FalliblePasswordInput as PasswordInput,
+    FailsHolder,
     onInputChange} from '../Templates/Input'
 export default class SignIn extends Component {
 
@@ -15,26 +17,26 @@ export default class SignIn extends Component {
 
         //@TODO replace 'SUCCESS'
         //@TODO add token to header
-        if(email && password)
-            SignInMutation(email, password, response => {
-                if(response.status == 'SUCCESS') {
-                    console.log("SUCCESS")
-                } else {
-                    console.log(response)
-                }
+        if(email && password) {
+            SignInMutation(email, password, res => {
+                    if(res) {
+                        this.props.onAuth && this.props.onAuth(res)
+                    }
             })
+        } else {
+            this.setState(produce(draft => {draft.timesFailed++}))
+        }
     }
 
     render() {
         const {email, password} = this.state
         return(
             <div className='signin-holder'>
-                <EmailInput isCorrect={email}
-                            timesFailed={this.state.timesFailed}
-                            onChange={this.onInputChange('email')}/>
-                <PasswordInput isCorrect={password}
-                               timesFailed={this.state.timesFailed}
-                               onChange={this.onInputChange('password')}/>
+                <FailsHolder timesFailed={this.state.timesFailed}
+                             correctElems={[email, password]}>
+                    <EmailInput onChange={this.onInputChange('email')}/>
+                    <PasswordInput onChange={this.onInputChange('password')}/>
+                </FailsHolder>
                 <div className='signin-button' onClick={this.handleClick}>Sign In</div>
             </div>
         )
