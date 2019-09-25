@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5fdeee7f-6a76-4854-aa6b-baadf8050174" name="Default Changelist" comment="Templates">
+    <list default="true" id="5fdeee7f-6a76-4854-aa6b-baadf8050174" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/NotAuthenticated/Authentification/Templates/Input/FailsHolder.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NotAuthenticated/Authentification/SignIn/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/NotAuthenticated/Authentification/SignIn/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NotAuthenticated/Authentification/SignUp/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/NotAuthenticated/Authentification/SignUp/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NotAuthenticated/Authentification/Templates/Input/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/NotAuthenticated/Authentification/Templates/Input/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NotAuthenticated/Authentification/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/NotAuthenticated/Authentification/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NotAuthenticated/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/NotAuthenticated/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -142,6 +149,8 @@
       <workItem from="1567684724926" duration="7907000" />
       <workItem from="1568884463449" duration="3122000" />
       <workItem from="1569337915566" duration="9349000" />
+      <workItem from="1569417609756" duration="771000" />
+      <workItem from="1569427475030" duration="2975000" />
     </task>
     <task id="LOCAL-00001" summary="Initial?">
       <created>1568888523421</created>
@@ -150,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568888523421</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Auth templates">
+      <created>1569417632666</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1569417632666</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,7 +189,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Initial?" />
     <MESSAGE value="Templates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Templates" />
+    <MESSAGE value="Auth templates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Auth templates" />
   </component>
   <component name="masterDetails">
     <states>
