@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import './style.sass'
 import SignInMutation from './SignInMutation'
-import { EmailInput, PasswordInput } from '../Templates/Input'
+import {
+    FallibleEmailInput as EmailInput,
+    FalliblePasswordInput as PasswordInput,
+    onInputChange} from '../Templates/Input'
 export default class SignIn extends Component {
 
-    state = {
-        email : null,
-        password : null
-    }
+    state = { timesFailed : 0 }
+    onInputChange = onInputChange(this)
     handleClick = () => {
 
         const {email, password} = this.state
@@ -24,18 +25,16 @@ export default class SignIn extends Component {
             })
     }
 
-    handleEmailChange = ({email}) => {
-        this.setState({email})
-    }
-    handlePasswordChange = ({password}) => {
-        this.setState({password})
-    }
-
     render() {
+        const {email, password} = this.state
         return(
             <div className='signin-holder'>
-                <EmailInput onChange={this.handleEmailChange}/>
-                <PasswordInput onChange={this.handlePasswordChange}/>
+                <EmailInput isCorrect={email}
+                            timesFailed={this.state.timesFailed}
+                            onChange={this.onInputChange('email')}/>
+                <PasswordInput isCorrect={password}
+                               timesFailed={this.state.timesFailed}
+                               onChange={this.onInputChange('password')}/>
                 <div className='signin-button' onClick={this.handleClick}>Sign In</div>
             </div>
         )

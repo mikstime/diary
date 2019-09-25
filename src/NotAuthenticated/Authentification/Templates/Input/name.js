@@ -5,32 +5,11 @@ import { NameRegEx } from '../../utils'
 
 class NameInput extends Component {
 
-    static propTypes = {
-        onChange : PropTypes.func
-    }
-    state = {
-        name : null
-    }
-    handleEmailChange = res => {
-        const { isValid, input } = res
-        const { onChange } = this.props
-        if(isValid) {
-            this.setState({
-                name : input
-            }, () => onChange && onChange( this.state))
-        } else {
-            this.setState({
-                name : null
-            }, () => onChange && onChange( this.state))
-        }
-
-    }
-
     render() {
-        const {prefix = ''} = this.props
+        const {prefix = '', ...rest} = this.props
         return(
             <Input
-                onChange={this.handleEmailChange}
+                {...rest}
                 validator={NameRegEx}
                 inputProps={{
                     type : 'text',

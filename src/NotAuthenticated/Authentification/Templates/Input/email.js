@@ -5,31 +5,11 @@ import { EmailRegEx } from '../../utils'
 
 class EmailInput extends Component {
 
-    static propTypes = {
-        onChange : PropTypes.func
-    }
-    state = {
-        email : null
-    }
-    handleEmailChange = res => {
-        const { isValid, input } = res
-        const { onChange } = this.props
-        if(isValid) {
-            this.setState({
-                email : input
-            }, () => onChange && onChange( this.state))
-        } else {
-            this.setState({
-                email : null
-            }, () => onChange && onChange( this.state))
-        }
-
-    }
 
     render() {
         return(
             <Input
-                onChange={this.handleEmailChange}
+                {...this.props}
                 validator={EmailRegEx}
                 inputProps={{
                     type : 'text',

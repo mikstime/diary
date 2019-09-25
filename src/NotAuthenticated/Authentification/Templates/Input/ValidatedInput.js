@@ -21,27 +21,27 @@ class ValidatedInput extends Component {
         if( validator instanceof RegExp) {
             return {
                 isValid : validator.test(input),
-                validatedInput : input
+                input
             }
         } else if( typeof validator === 'function') {
             return validator(input)
         }
         return {
             isValid : true,
-            validatedInput : input
+            input
         }
     }
     handleChange = event => {
-        const input = event.target.value
 
-        const { isValid, validatedInput } = this.validateInput(input)
+        const { isValid, input } = this.validateInput(event.target.value)
 
-        this.setState({ isValid, input : validatedInput },
+        this.setState({ isValid, input},
             () => this.props.onChange && this.props.onChange(this.state)
         )
     }
     render() {
         const {inputProps, validProps, invalidProps, ...style} = this.props
+
         return(
             <div {...style}>
                 <input {...inputProps} onChange={this.handleChange}/>
@@ -55,17 +55,19 @@ class ValidatedInput extends Component {
     }
 }
 export default ValidatedInput
-
-export const StyledValidatedInput = (props) => (
-    <ValidatedInput
-        className='validated-input'
-        validProps={{
-            className : 'valid-input',
-        }}
-        invalidProps={{
-            className : 'invalid-input',
-            children : '👎'
-        }}
-
-        {...props}/>
-)
+export const StyledValidatedInput = (props) => {
+    const className = `${props.className || ''} validated-input`
+    return (
+        <ValidatedInput
+            { ...props }
+            className={ className }
+            validProps={ {
+                className : 'valid-input',
+            } }
+            invalidProps={ {
+                className : 'invalid-input',
+                children : '👎'
+            } }
+        />
+    )
+}
