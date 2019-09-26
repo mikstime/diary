@@ -5,6 +5,7 @@ import {
     Store
 } from 'relay-runtime'
 
+//@TODO read token from cookies
 const fetchQuery = (operation, variables) =>
     fetch('http://localhost:4000', {
         method : 'POST',

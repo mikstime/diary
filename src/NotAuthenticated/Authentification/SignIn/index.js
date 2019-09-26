@@ -5,9 +5,10 @@ import produce from 'immer'
 import {
     FallibleEmailInput as EmailInput,
     FalliblePasswordInput as PasswordInput,
-    FailsHolder,
-    onInputChange} from '../Templates/Input'
-export default class SignIn extends Component {
+    FailsHolder, onInputChange } from '../Templates/Input'
+
+import { withCookies, Cookies } from 'react-cookie';
+class SignIn extends Component {
 
     state = { timesFailed : 0 }
     onInputChange = onInputChange(this)
@@ -15,12 +16,18 @@ export default class SignIn extends Component {
 
         const {email, password} = this.state
 
-        //@TODO replace 'SUCCESS'
-        //@TODO add token to header
         if(email && password) {
             SignInMutation(email, password, res => {
                     if(res) {
-                        this.props.onAuth && this.props.onAuth(res)
+
+                        if(res.signIn && res.signIn.session) {
+                            const token =  res.signIn.session.token
+                            this.props.cookies.set('token', token, { path: '/' });
+
+                            this.props.onAuth && this.props.onAuth(res.signIn.session)
+                        } else {
+                            console.log('Failed')
+                        }
                     }
             })
         } else {
@@ -37,8 +44,12 @@ export default class SignIn extends Component {
                     <EmailInput onChange={this.onInputChange('email')}/>
                     <PasswordInput onChange={this.onInputChange('password')}/>
                 </FailsHolder>
-                <div className='signin-button' onClick={this.handleClick}>Sign In</div>
+                <div className='signin-button' onClick={this.handleClick}>
+                    Sign In
+                </div>
             </div>
         )
     }
 }
+
+export default withCookies(SignIn)
